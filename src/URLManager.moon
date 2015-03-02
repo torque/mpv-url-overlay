@@ -81,6 +81,7 @@ class URLManager
 					endIndex = x - 1
 					break
 
+		endIndex = #@urls if startIndex and not endIndex
 		-- if startIndex is false, nothing was found.
 		if startIndex
 			@lastIndex = startIndex
