@@ -1,0 +1,44 @@
+// Disclaimer: this file is not a valid url-overlay, as comments are not
+// allowed in JSON, and it therefore cannot be used as-is.
+{
+	// The resX and resY keys specify the resolution of the video used to
+	// generate the url-overlay data. This information is used to scale
+	// the supplied lines bounds if the playback resolution doesn't match
+	// that of the url-overlay. HOWEVER, the aspect ratio of the file
+	// being played (post-anamorphic stretching) must be the same as the
+	// aspect ratio of this supplied resolution. Therefore, this overlay
+	// could be used with an 1920x1080 video, but not with a 640x480
+	// video. Resolution changes mid-stream are not supported.
+	"resX": 1280,
+	"resY": 720,
+	// The events array MUST be sorted primarily by url start time and
+	// original line index. The latter is necessary to preserve layering.
+	"events": [
+		{
+			// The start and stop times are seconds since the beginning of the
+			// video file. Floating point values are allowed, though there is
+			// no point in more precision than the accuracy of ASS, which is
+			// 1ms. There is currently no mechanism to handle linked Matroska
+			// segments, but like subtitles, the times correspond to the
+			// original video timelines, not to the composited virtual
+			// timeline.
+			"start": 2.2,
+			"stop": 300,
+			// The bounds are relative to the top-left corner of the video.
+			// The units are in pixels.
+			"bounds": {
+				"r": 735, "t": 314, "l": 1084, "b": 408
+			},
+			// The string that will be sent to the OS's command-line launcher.
+			// It MUST start with http(s):// because no other validation is
+			// performed, and sending arbitrary strings to a launcher is
+			// asking for trouble. At least with this restriction that trouble
+			// will hopefully be limited to the browser.
+			"url": "https:\/\/github.com",
+			// The layer key is optional. If omitted, a value of 0 is assumed.
+			// The value should be equal to the ASS layer value of the
+			// original subtitle line from which this url is derived.
+			"layer": 1
+		}
+	]
+}
