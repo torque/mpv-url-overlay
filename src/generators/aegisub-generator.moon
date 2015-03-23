@@ -4,7 +4,7 @@ export script_author      = "torque"
 export script_version     = "0.1.0"
 
 json = require 'json'
-ASSInspector = require 'ASSInspector.Inspector'
+ASSInspector = require 'SubInspector.Inspector'
 
 local myInspector
 urlPlaceholder = "\3%d\3"
